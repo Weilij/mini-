@@ -114,6 +114,38 @@
       width: 100%;
     }
   </style>
+
+  <style>
+    @keyframes popIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flashEffect {
+      0% {
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #cameraIntro {
+      z-index: 9999;
+    }
+  </style>
 </head>
 
 <body>
@@ -280,7 +312,7 @@
         <div class="row g-4">
 
           <!-- 活動 1 -->
-          <div class="col-md-6" >
+          <div class="col-md-6">
             <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
               <h4 class="text-danger">🔥 限時特惠！</h4>
               <p class="text-secondary">活動期間：6/5～6/15，指定相機限量折扣，售完為止！</p>
@@ -289,7 +321,7 @@
           </div>
 
           <!-- 活動 2 -->
-          <div class="col-md-6"  data-aos-delay="200">
+          <div class="col-md-6" data-aos-delay="200">
             <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
               <h4 class="text-primary">🎁 滿額送好禮</h4>
               <p class="text-secondary">消費滿 NT$10,000 即贈原廠相機背帶一條</p>
@@ -318,6 +350,13 @@
   </div>
   </section>
   </div>
+
+   <!-- 開場動畫 -->
+   <div id="cameraIntro"
+   class="position-fixed top-0 start-0 w-100 h-100 bg-black d-flex flex-column justify-content-center align-items-center text-white">
+   <img src="/相機logog2.png" alt="Camera" id="cameraImg" style="width: 500px; animation: popIn 1s ease;">
+   <div id="flash" class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0;"></div>
+ </div>
 </body>
 
 <!-- 頁尾 -->
@@ -344,9 +383,12 @@
       <div class="col-md-4 mb-3">
         <h5 class="text-white">追蹤我們</h5>
         <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png" alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
+            alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png"
+            alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png"
+            alt=""></a>
       </div>
     </div>
 
@@ -417,6 +459,8 @@
 <script>
   AOS.init();
 </script>
+
+<script src="/flasheffect.js"></script>
 
 <script src="./login.js"></script>
 
