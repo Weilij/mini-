@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WEiLiFlim</title>
+  <link rel="icon" href="./film-roll.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">  <!-- 右下角回最上面 -->
+  <style>
+    #logo {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 80px;
+      height: 80px;
+      background-image: url("./12.png");
+      /* 換成你的 logo 路徑 */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+      z-index: 1000;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    /* 可選：滑鼠移上去變透明一點 */
+    #logo:hover {
+      opacity: 0.8;
+    }
+  </style>
+  <!-- 漢堡菜單 -->
+  <style>
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: white !important;
+      width: 25px;
+      height: 3px;
+    }
+  </style>
+  <!-- 輪播 -->
+  <style>
+    .carousel-inner {
+      aspect-ratio: 16 / 5;
+      /* 輪播區域統一高度 */
+    }
+
+    .carousel-inner img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      /* 保持圖片比例並裁切填滿 */
+    }
+
+    .card {
+      transition: transform 0.1s ease;
+    }
+
+    #carouselmain {
+      display: block;
+      transition: transform 0.1s ease;
+    }
+
+    #carouselmain:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  <!-- 下拉式選單 -->
+  <style>
+    .custom-dropdown {
+      position: relative;
+    }
+
+    .custom-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      border-radius: 5px;
+      background-color: #ffffff;
+      border: 1px solid #ffffff;
+      z-index: 1000;
+      min-width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-dropdown-menu a {
+      display: block;
+      padding: 10px;
+      color: #000000;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .custom-dropdown-menu a:hover {
+      background-color: #333;
+      color: #ffffff;
+      border-radius: 10px;
+    }
+  </style>
+  <!-- 卡片圖片樣式 -->
+  <style>
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+    }
+  </style>
+  <!-- 左側導覽列 -->
+  <style>
+    /* 固定側邊欄 */
+    .side-nav {
+      position: fixed;
+      top: 100px;
+      /* 預留 logo 或上方空間 */
+      left: 20px;
+      width: 180px;
+      height: auto;
+      background-color: #ffffff;
+      border-right: 0px solid #ddd;
+      padding: 20px 10px;
+      z-index: 999;
+    }
+
+    .side-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-nav ul li {
+      margin-bottom: 15px;
+    }
+
+    .side-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .side-nav ul li a:hover {
+      color: #ffb700;
+    }
+
+    /* 主內容要有左邊間距避免被擋住 */
+    .main-content {
+      margin-left: 200px;
+    }
+
+    /* 響應式處理：手機時隱藏側邊欄 */
+    @media (max-width: 768px) {
+      .side-nav {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+</head>
+<!-- 回到頂部的 logo -->
+<div id="logo" onclick="scrollToTop()"></div>
+<header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1050;">
+
+  <!-- logo與漢堡列 -->
+  <div class="d-flex align-items-center" style="background-color: #000000;">
+      <!-- Logo -->
+      <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
+          <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
+      </a>
+
+      <!-- 推動右側區塊到右邊 -->
+      <div class="d-flex align-items-center ms-auto">
+
+          <!-- 登入狀態 -->
+          <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
+              <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
+          </div>
+      </div>
+
+
+      <!-- 漢堡選單 (手機用) -->
+      <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" id="hamburgerButton">
+          <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+          </span>
+      </button>
+  </div>
+
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+          <!-- 導覽連結 -->
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul class="navbar-nav justify-content-center text-center">
+                  <!-- 桌面版 自訂 dropdown -->
+                  <li class="nav-item custom-dropdown d-none d-lg-block">
+                      <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
+                      <div class="custom-dropdown-menu">
+                          <a href="sonymain.html">索尼 SONY</a>
+                          <a href="ricohmain.html">理光 Ricoh</a>
+                      </div>
+                  </li>
+
+                  <!-- 手機版 Bootstrap dropdown -->
+                  <li class="nav-item dropdown d-block d-lg-none ">
+                      <a class="nav-link dropdown-toggle" href="#" role="button"
+                          data-bs-toggle="dropdown">相機介紹</a>
+                      <ul class="dropdown-menu text-center">
+                          <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
+                          <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="商城main.html">商城</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">促銷活動</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">最新消息</a>
+                    </li>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">聯絡我們</a>
+                  </li>
+
+                  <li class="nav-item d-block d-lg-none" id="loginMobileItem">
+                      <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+</header>
+
+
+
+
+<!-- 三格分頁 -->
+<div class="container mt-3" style="padding-top: 80px;">
+  <div class="row">
+    <nav class="side-nav">
+      <ul>
+        <li><a href="#品牌名稱">索尼SONY</a></li>
+        <li><a href="#品牌名稱介紹">品牌介紹</a></li>
+        <li><a href="#品牌名稱相機">SONY相機</a></li>
+      </ul>
+    </nav>
+    <div class="col-md-10 mb-4  main-content">
+      <div class="row">
+        <!-- 標題 -->
+        <div class="container mt-5">
+          <p class="d-flex justify-content-center" style="font-size: 50px;" id="品牌名稱">索尼SONY</p>
+        </div>
+        <div class="d-flex justify-content-center mb-3 rounded-circle">
+          <iframe width="1065" height="600"
+            src="https://www.youtube.com/embed/G7h5VJqeqiY?autoplay=1&mute=1&loop=1&playlist=G7h5VJqeqiY&controls=0&modestbranding=1&rel=0&showinfo=0"
+            title="YouTube video player" frameborder="0" allow="autoplay" style="border: none; pointer-events: none;"
+            allowfullscreen>
+          </iframe>
+
+        </div>
+        <div>
+          <div class="text-center mb-4" style="margin-top: 100px; margin-bottom: 100px;">
+            <h4 id="品牌名稱介紹" class="d-flex justify-content-center">品牌介紹</h4>
+            <p class="text-center">
+              索尼（日語：ソニー，英語：Sony；曾譯作「新力」）是源自日本的跨國綜合企業，由擁有技術研發背景的井深大與擅長公關、行銷的盛田昭夫於1946年共同創辦。以研製電子產品為主要事業，經營領域橫跨消費電子產品、電子游戲、金融、娛樂產業、半導體、智慧型手機、相機、攝影機、音響等，擁有全世界的品牌知名度；旗下品牌有Xperia、Walkman、索尼音樂、哥倫比亞影視、PlayStation、Alpha等。多次為美國《財富》雜誌評選為世界500強企業之列。現今總部位於東京品川的索尼城（Sony
+              City）。
+            </p>
+          </div>
+          <div class="text-center mt-5">
+            <h4 id="品牌名稱相機">SONY相機</h4>
+            <section class="text-white">
+              <div class="container">
+                <div class="row g-4">
+                  <!-- 相機卡片 1 -->
+                  <div class="col-md-4">
+                    <div class="card bg-dark text-white border-0 h-100">
+                      <img src="./sony main/08_e11455314.jpg" class="card-img-top" alt="相機1">
+                      <div class="card-body">
+                        <h5 class="card-title">A7IV</h5>
+                        <p class="card-text">各項數據出色水桶機</p>
+                        <a class="btn btn-outline-light btn-sm" href="./sonya74.html">更多資訊</a>
+                      </div>
+                    </div>
+                  </div>
+            
+
+
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+<!-- 頁尾 -->
+<footer class="py-4 bg-black text-secondary" id="聯絡我們">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <!-- 公司資訊 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-white">WEiLiFlim 攝影商城</h5>
+        <p class="mb-1">地址：台中市西區中美街123號</p>
+        <p class="mb-1">電話：(04) 1234-5678</p>
+        <p class="mb-1">電子信箱：service@weiliflim.com</p>
+      </div>
+
+      <!-- 客服時間 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-white">客服時間</h5>
+        <p class="mb-1">週一至週五：09:00 - 18:00</p>
+        <p class="mb-1">週末與國定假日暫停服務</p>
+        <p class="mb-1">線上客服：24小時自動回應系統</p>
+      </div>
+
+      <!-- 社群連結 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-white">追蹤我們</h5>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png" alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png" alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png" alt=""></a>
+      </div>
+    </div>
+
+    <hr class="border-secondary my-3">
+
+    <div class="text-center">
+      <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap 與 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<!-- 回到頂部按鈕 -->
+<script>
+  window.onscroll = function () {
+    const btn = document.getElementById("logo");
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+</script>
+<!-- 漢堡JS -->
+<script>
+  // Look for .hamburger
+  var hamburger = document.querySelector(".hamburger");
+  // On click
+  hamburger.addEventListener("click", function () {
+    // Toggle class "is-active"
+    hamburger.classList.toggle("is-active");
+    // Do something else, like open/close menu
+  });
+</script>
+<!-- 下拉式JS -->
+<script>
+  function toggleDropdown(event) {
+    event.preventDefault();
+    const dropdown = event.target.closest('.custom-dropdown');
+    const menu = dropdown.querySelector('.custom-dropdown-menu');
+    const isVisible = menu.style.display === 'block';
+
+    // 關閉所有其他下拉選單
+    document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+
+    // 切換目前的選單
+    menu.style.display = isVisible ? 'none' : 'block';
+  }
+
+  // 點擊外部時關閉下拉選單
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.custom-dropdown')) {
+      document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+    }
+  });
+</script>
+<!-- 漸變 -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<script src="./login.js"></script>
+
+</body>
+
+</html>

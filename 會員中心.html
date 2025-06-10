@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEiLiFlim</title>
+    <link rel="icon" href="./film-roll.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .qk-container {
+            max-width: 500px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin: auto;
+            padding: 20px;
+            border: solid 1px #000000;
+            border-radius: 15px;
+        }
+    </style>
+    <!-- 右下角回最上面 -->
+    <style>
+        #logo {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 80px;
+            height: 80px;
+            background-image: url("./12.png");
+            /* 換成你的 logo 路徑 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: transparent;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        /* 可選：滑鼠移上去變透明一點 */
+        #logo:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <!-- 漢堡菜單 -->
+    <style>
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            background-color: white !important;
+            width: 25px;
+            height: 3px;
+        }
+    </style>
+    <!-- 輪播 -->
+    <style>
+        .carousel-inner {
+            aspect-ratio: 16 / 5;
+            /* 輪播區域統一高度 */
+        }
+
+        .carousel-inner img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            /* 保持圖片比例並裁切填滿 */
+        }
+
+        .card {
+            transition: transform 0.3s ease;
+        }
+
+        #carouselmain {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        #carouselmain:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <!-- 下拉式選單 -->
+    <style>
+        .custom-dropdown {
+            position: relative;
+        }
+
+        .custom-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-radius: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            z-index: 1000;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: #000000;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .custom-dropdown-menu a:hover {
+            background-color: #333;
+            color: #ffffff;
+            border-radius: 15px;
+        }
+    </style>
+    <!-- 卡片圖片樣式 -->
+    <style>
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+    </style>
+</head>
+<!-- 回到頂部的 logo -->
+<div id="logo" onclick="scrollToTop()"></div>
+<!-- logo與漢堡列 -->
+<div class="d-flex justify-content-between align-items-center" style="background-color: #1f0b09;">
+    <!-- Logo -->
+    <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
+        <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
+    </a>
+
+    <!-- 登入會員中心 -->
+    <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
+        <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
+    </div>
+
+    <!-- 漢堡選單 (手機用) -->
+    <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" id="hamburgerButton">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+</div>
+
+<!-- 導覽列 -->
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container">
+
+        <!-- 導覽連結 -->
+        <div class="collapse navbar-collapse justify-content-center " id="navbarNav">
+            <ul class="navbar-nav justify-content-center text-center">
+                <!-- 桌面版 自訂 dropdown -->
+                <li class="nav-item custom-dropdown d-none d-lg-block">
+                    <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
+                    <div class="custom-dropdown-menu">
+                        <a href="sonymain.html">索尼 SONY</a>
+                        <a href="canonmain.html">佳能 CANON</a>
+                        <a href="nikonmain.html">尼康 Nikon</a>
+                        <a href="ricohmain.html">理光 Ricoh</a>
+                        <a href="pentaxmain.html">賓得士 Pentax</a>
+                    </div>
+                </li>
+
+                <!-- 手機版 Bootstrap dropdown -->
+                <li class="nav-item dropdown d-block d-lg-none ">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">相機介紹</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
+                        <li><a class="dropdown-item" href="canonmain.html">佳能CANON</a></li>
+                        <li><a class="dropdown-item" href="nikonmain.html">尼康Nikon</a></li>
+                        <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
+                        <li><a class="dropdown-item" href="pentaxmain.html">賓得士 Pentax</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="商城main.html">商城</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">鏡頭</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">配件</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">促銷活動</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">最新消息</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">聯絡我們</a>
+                </li>
+                <!-- 手機版 -->
+                <li class="nav-item d-block d-lg-none" id="loginMobileItem">
+                    <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="qk-container mb-4">
+    <div class="row">
+        <form>
+            <fieldset>
+                <legend class="d-flex justify-content-center">會員登入</legend>
+
+                <div class="d-flex justify-content-between mt-5">
+
+                    <a href="https://www.facebook.com/" class="col-4 btn"
+                        style="margin-left: 10%; background-color: rgb(44, 100, 246); color: #ffffff; border-radius: 3px;"><img
+                            src="./Facebook_Logo_2023.png" class="w-25 me-3">快速登入</a>
+                    <a href="https://www.line.me/tw/" class="col-4 btn"
+                        style="margin-right: 10%;background-color: rgb(90, 196, 99); color: #ffffff; border-radius: 3px;"><img
+                            src="./linelogo.png" class="w-25 me-3">快速登入</a>
+                </div>
+                <hr style="border: 1px solid #000000;">
+                <div>
+                    <label for="mail" class="d-flex justify-content-center">電子郵件</label>
+                    <input type="mail" placeholder="請輸入你的mail" id="mail"
+                        style="width: 80%; margin-left: 10%; margin-right: 10%; margin-bottom: 10px;">
+
+                    <label for="passw0rd" class="d-flex justify-content-center">密碼 </label>
+                    <input type="tel" placeholder="請輸入你的密碼" id="password"
+                        style="width: 80%; margin-left: 10%; margin-right: 10%;">
+
+                    <input type="button" id="loginBtn" class="btn d-flex justify-content-center" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: 20px;
+                    background-color: rgb(74, 72, 71); color: #ffffff; border-radius: 3px;" value="登入">
+
+                    <input type="checkbox" id="rememberMe" style="margin-left: 10%;">
+                    <label for="rememberMe">記住我</label>
+                </div>
+
+                <div class="mt-2">
+                    <a href="#" class="col-4 btn" style="margin-left: 10%; background-color: rgba(248, 249, 250, 0); 
+                    color: #481800; border-radius: 3px;">忘記密碼？</a>
+                    <a href="#" class="col-4 btn" style="margin-left: 10%; background-color: rgba(255, 255, 255, 0); 
+                    color: #481800; border-radius: 3px;">註冊</a>
+                </div>
+                <div class="mt-2 mb-2">
+                    <hr style="border: 1px solid #000000;">
+                    <p class="d-flex justify-content-center" style="color: #000000;">登入即表示您同意我們的<a href="#">使用條款</a>和<a
+                            href="#">隱私政策</a></p>
+                </div>
+
+            </fieldset>
+        </form>
+
+
+    </div>
+</div>
+
+
+<!-- 頁尾 -->
+<footer class="py-4 bg-black text-secondary" id="聯絡我們">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- 公司資訊 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">WEiLiFlim 攝影商城</h5>
+          <p class="mb-1">地址：台中市西區中美街123號</p>
+          <p class="mb-1">電話：(04) 1234-5678</p>
+          <p class="mb-1">電子信箱：service@weiliflim.com</p>
+        </div>
+  
+        <!-- 客服時間 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">客服時間</h5>
+          <p class="mb-1">週一至週五：09:00 - 18:00</p>
+          <p class="mb-1">週末與國定假日暫停服務</p>
+          <p class="mb-1">線上客服：24小時自動回應系統</p>
+        </div>
+  
+        <!-- 社群連結 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">追蹤我們</h5>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png" alt=""></a>
+        </div>
+      </div>
+  
+      <hr class="border-secondary my-3">
+  
+      <div class="text-center">
+        <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Bootstrap 與 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<!-- 回到頂部按鈕 -->
+<script>
+    window.onscroll = function () {
+        const btn = document.getElementById("logo");
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+<!-- 漢堡JS -->
+<script>
+    // Look for .hamburger
+    var hamburger = document.querySelector(".hamburger");
+    // On click
+    hamburger.addEventListener("click", function () {
+        // Toggle class "is-active"
+        hamburger.classList.toggle("is-active");
+        // Do something else, like open/close menu
+    });
+</script>
+<!-- 下拉式JS -->
+<script>
+    function toggleDropdown(event) {
+        event.preventDefault();
+        const dropdown = event.target.closest('.custom-dropdown');
+        const menu = dropdown.querySelector('.custom-dropdown-menu');
+        const isVisible = menu.style.display === 'block';
+
+        // 關閉所有其他下拉選單
+        document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+
+        // 切換目前的選單
+        menu.style.display = isVisible ? 'none' : 'block';
+    }
+
+    // 點擊外部時關閉下拉選單
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.custom-dropdown')) {
+            document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+        }
+    });
+</script>
+<!-- 漸變 -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+<!-- 登入 -->
+<script>
+    // 處理登入邏輯
+    document.getElementById("loginBtn").addEventListener("click", function () {
+        const email = document.getElementById("mail").value;
+        const password = document.getElementById("password").value;
+        const remember = document.getElementById("rememberMe").checked;
+
+        if (email === "" || password === "") {
+            alert("請輸入完整的帳號與密碼");
+            return;
+        }
+
+        // 假設帳密正確（模擬）
+        if (email === "test@gmail.com" && password === "123456") {
+            alert("登入成功");
+
+            // 記住我
+            if (remember) {
+                localStorage.setItem("rememberEmail", email);
+                localStorage.setItem("rememberMe", "true");
+            } else {
+                localStorage.removeItem("rememberEmail");
+                localStorage.removeItem("rememberMe");
+            }
+
+            // 儲存登入狀態
+            localStorage.setItem("loggedInUser", email);
+
+            // 變更頂部按鈕
+            updateLoginStatus();
+
+            // 跳轉會員中心
+            window.location.href = "主頁.html";
+        } else {
+            alert("帳號或密碼錯誤");
+        }
+    });
+
+    // 自動載入已登入狀態
+    window.addEventListener("load", function () {
+        const rememberMe = localStorage.getItem("rememberMe");
+        if (rememberMe === "true") {
+            document.getElementById("mail").value = localStorage.getItem("rememberEmail");
+            document.getElementById("rememberMe").checked = true;
+        }
+
+        updateLoginStatus();
+    });
+
+    // 更新登入按鈕顯示內容
+    function updateLoginStatus() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    const loginDesktop = document.getElementById("loginStatus");
+    const loginMobileItem = document.getElementById("loginMobileItem");
+
+    if (loggedInUser) {
+        // 桌面版：改為 dropdown
+        if (loginDesktop) {
+            loginDesktop.innerHTML = `
+                <div class="custom-dropdown text-light text-decoration-none">
+                    <span class="nav-link" style="cursor: pointer;" onclick="toggleDropdown(event)">${loggedInUser}</span>
+                    <div class="custom-dropdown-menu">
+                        <a href="個人資料.html">個人資料</a>
+                        <a href="#" id="logoutBtn">登出</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 手機版：改為 dropdown
+        if (loginMobileItem) {
+            loginMobileItem.innerHTML = `
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="loginStatusMobile">${loggedInUser}</a>
+                <ul class="dropdown-menu text-center">
+                    <li><a class="dropdown-item" href="個人資料.html">個人資料</a></li>
+                    <li><a class="dropdown-item" href="#" id="logoutBtn">登出</a></li>
+                </ul>
+            `;
+        }
+
+    } else {
+        // 桌面版：恢復為單一登入連結
+        if (loginDesktop) {
+            loginDesktop.innerHTML = `
+                <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
+            `;
+        }
+
+        // 手機版：恢復為單一登入連結
+        if (loginMobileItem) {
+            loginMobileItem.innerHTML = `
+                <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
+            `;
+        }
+    }
+}
+</script>
+<!-- 登出 -->
+<script>
+    // 登出按鈕點擊事件
+    document.addEventListener("click", function (e) {
+        if (e.target && e.target.id === "logoutBtn") {
+            localStorage.removeItem("loggedInUser");
+            localStorage.removeItem("rememberEmail");
+            localStorage.removeItem("rememberMe");
+
+            alert("已登出");
+            updateLoginStatus(); // 更新畫面
+            window.location.href = "主頁.html";
+        }
+    });
+</script>
+
+
+
+</body>
+
+</html>
