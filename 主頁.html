@@ -1,471 +1,471 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
+  <!DOCTYPE html>
+  <html lang="zh-Hant">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WEiLiFlim</title>
-  <link rel="icon" href="./film-roll.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- 右下角回最上面 -->
-  <style>
-    #logo {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 80px;
-      height: 80px;
-      background-image: url("./12.png");
-      /* 換成你的 logo 路徑 */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: transparent;
-      z-index: 1000;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-
-    /* 可選：滑鼠移上去變透明一點 */
-    #logo:hover {
-      opacity: 0.8;
-    }
-  </style>
-  <!-- 漢堡菜單 -->
-  <style>
-    .hamburger-inner,
-    .hamburger-inner::before,
-    .hamburger-inner::after {
-      background-color: white !important;
-      width: 25px;
-      height: 3px;
-    }
-  </style>
-  <!-- 輪播 -->
-  <style>
-    .carousel-inner {
-      aspect-ratio: 16 / 5;
-      /* 輪播區域統一高度 */
-    }
-
-    .carousel-inner img {
-      display: block;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      /* 保持圖片比例並裁切填滿 */
-    }
-
-    .card {
-      transition: transform 0.1s ease;
-    }
-
-    #carouselmain {
-      display: block;
-      transition: transform 0.1s ease;
-    }
-
-    #carouselmain:hover {
-      transform: scale(1.05);
-    }
-  </style>
-  <!-- 下拉式選單 -->
-  <style>
-    .custom-dropdown {
-      position: relative;
-    }
-
-    .custom-dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      border-radius: 15px;
-      background-color: #ffffff;
-      border: 1px solid #ffffff;
-      z-index: 1000;
-      min-width: 150px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .custom-dropdown-menu a {
-      display: block;
-      padding: 10px;
-      color: #000000;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .custom-dropdown-menu a:hover {
-      background-color: #333;
-      color: #ffffff;
-      border-radius: 10px;
-    }
-  </style>
-  <!-- 卡片圖片樣式 -->
-  <style>
-    .card-img-top {
-      height: 250px;
-      object-fit: cover;
-      width: 100%;
-    }
-  </style>
-
-  <style>
-    @keyframes popIn {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEiLiFlim</title>
+    <link rel="icon" href="./film-roll.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- 右下角回最上面 -->
+    <style>
+      #logo {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 80px;
+        height: 80px;
+        background-image: url("./12.png");
+        /* 換成你的 logo 路徑 */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        z-index: 1000;
+        cursor: pointer;
+        transition: opacity 0.3s;
       }
 
-      100% {
-        transform: scale(1);
-        opacity: 1;
+      /* 可選：滑鼠移上去變透明一點 */
+      #logo:hover {
+        opacity: 0.8;
       }
-    }
-
-    @keyframes flashEffect {
-      0% {
-        opacity: 0;
+    </style>
+    <!-- 漢堡菜單 -->
+    <style>
+      .hamburger-inner,
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+        background-color: white !important;
+        width: 25px;
+        height: 3px;
+      }
+    </style>
+    <!-- 輪播 -->
+    <style>
+      .carousel-inner {
+        aspect-ratio: 16 / 5;
+        /* 輪播區域統一高度 */
       }
 
-      20% {
-        opacity: 1;
+      .carousel-inner img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        /* 保持圖片比例並裁切填滿 */
       }
 
-      100% {
-        opacity: 0;
+      .card {
+        transition: transform 0.1s ease;
       }
-    }
 
-    #cameraIntro {
-      z-index: 9999;
-    }
-  </style>
-</head>
+      #carouselmain {
+        display: block;
+        transition: transform 0.1s ease;
+      }
 
-<body>
+      #carouselmain:hover {
+        transform: scale(1.05);
+      }
+    </style>
+    <!-- 下拉式選單 -->
+    <style>
+      .custom-dropdown {
+        position: relative;
+      }
 
-  <!-- 回到頂部的 logo -->
-  <div id="logo" onclick="scrollToTop()"></div>
+      .custom-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-radius: 15px;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        z-index: 1000;
+        min-width: 150px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
 
-  <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1050;">
+      .custom-dropdown-menu a {
+        display: block;
+        padding: 10px;
+        color: #000000;
+        text-decoration: none;
+        white-space: nowrap;
+      }
 
-    <!-- logo與漢堡列 -->
-    <div class="d-flex align-items-center" style="background-color: #000000;">
-      <!-- Logo -->
-      <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
-        <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
-      </a>
+      .custom-dropdown-menu a:hover {
+        background-color: #333;
+        color: #ffffff;
+        border-radius: 10px;
+      }
+    </style>
+    <!-- 卡片圖片樣式 -->
+    <style>
+      .card-img-top {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+      }
+    </style>
 
-      <!-- 推動右側區塊到右邊 -->
-      <div class="d-flex align-items-center ms-auto">
+    <style>
+      @keyframes popIn {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
 
-        <!-- 登入狀態 -->
-        <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
-          <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes flashEffect {
+        0% {
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      #cameraIntro {
+        z-index: 9999;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- 回到頂部的 logo -->
+    <div id="logo" onclick="scrollToTop()"></div>
+
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1050;">
+
+      <!-- logo與漢堡列 -->
+      <div class="d-flex align-items-center" style="background-color: #000000;">
+        <!-- Logo -->
+        <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
+          <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
+        </a>
+
+        <!-- 推動右側區塊到右邊 -->
+        <div class="d-flex align-items-center ms-auto">
+
+          <!-- 登入狀態 -->
+          <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
+            <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
+          </div>
         </div>
+
+
+        <!-- 漢堡選單 (手機用) -->
+        <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" id="hamburgerButton">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
       </div>
 
+      <!-- 導覽列 -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container">
 
-      <!-- 漢堡選單 (手機用) -->
-      <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" id="hamburgerButton">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
+          <!-- 導覽連結 -->
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav justify-content-center text-center">
+              <!-- 桌面版 自訂 dropdown -->
+              <li class="nav-item custom-dropdown d-none d-lg-block">
+                <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
+                <div class="custom-dropdown-menu">
+                  <a href="sonymain.html">索尼 SONY</a>
+                  <a href="ricohmain.html">理光 Ricoh</a>
+                </div>
+              </li>
+
+              <!-- 手機版 Bootstrap dropdown -->
+              <li class="nav-item dropdown d-block d-lg-none ">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">相機介紹</a>
+                <ul class="dropdown-menu text-center">
+                  <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
+                  <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="商城main.html">商城</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#促銷活動">促銷活動</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#最新消息">最新消息</a>
+              </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#聯絡我們">聯絡我們</a>
+              </li>
+
+              <li class="nav-item d-block d-lg-none" id="loginMobileItem">
+                <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- 輪播的畫面 -->
+    <div id="carouselExampleControls" class="carousel slide container-fluid" data-bs-ride="carousel"
+      style="padding-top: 120px;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="理光GRhdf.html" id="carouselmain"><img src="./輪播/1660614840.png" alt="..."></a>
+        </div>
+        <div class="carousel-item">
+          <a href="主頁.html" id="carouselmain"><img src="./輪播/zf.jpg" alt="..."></a>
+        </div>
+        <div class="carousel-item">
+          <a href="nikonz5ii.html" id="carouselmain"><img src="./輪播/z52.jpg" alt="..."></a>
+        </div>
+
+        <div class="carousel-item">
+          <a href="主頁.html" id="carouselmain"><img src="./輪播/FY24_a7c.jpg" alt="..."></a>
+        </div>
+        <div class="carousel-item">
+          <a href="主頁.html" id="carouselmain"><img src="./輪播/xm5.jpg" alt="..."></a>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
       </button>
     </div>
 
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+
+    <!-- 相機介紹簡介 -->
+    <section class="py-5 text-white">
       <div class="container">
-
-        <!-- 導覽連結 -->
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul class="navbar-nav justify-content-center text-center">
-            <!-- 桌面版 自訂 dropdown -->
-            <li class="nav-item custom-dropdown d-none d-lg-block">
-              <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
-              <div class="custom-dropdown-menu">
-                <a href="sonymain.html">索尼 SONY</a>
-                <a href="ricohmain.html">理光 Ricoh</a>
-              </div>
-            </li>
-
-            <!-- 手機版 Bootstrap dropdown -->
-            <li class="nav-item dropdown d-block d-lg-none ">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">相機介紹</a>
-              <ul class="dropdown-menu text-center">
-                <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
-                <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="商城main.html">商城</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#促銷活動">促銷活動</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#最新消息">最新消息</a>
-            </li>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#聯絡我們">聯絡我們</a>
-            </li>
-
-            <li class="nav-item d-block d-lg-none" id="loginMobileItem">
-              <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
-  <!-- 輪播的畫面 -->
-  <div id="carouselExampleControls" class="carousel slide container-fluid" data-bs-ride="carousel"
-    style="padding-top: 120px;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="理光GRhdf.html" id="carouselmain"><img src="./輪播/1660614840.png" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/zf.jpg" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="nikonz5ii.html" id="carouselmain"><img src="./輪播/z52.jpg" alt="..."></a>
-      </div>
-
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/FY24_a7c.jpg" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/xm5.jpg" alt="..."></a>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-
-  <!-- 相機介紹簡介 -->
-  <section class="py-5 text-white">
-    <div class="container">
-      <h2 class="mb-4 text-dark text-center">熱門相機推薦</h2>
-      <div class="row g-4">
-        <!-- 相機卡片 1 -->
-        <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0 h-100">
-            <img src="./理光/ge.jpg" class="card-img-top" alt="相機1">
-            <div class="card-body">
-              <h5 class="card-title">理光Rioch GR III HDF和GR IIIx HDF</h5>
-              <p class="card-text">兼具高畫質和柔和高亮表现</p>
-              <a class="btn btn-outline-light btn-sm" href="理光GRhdf.html">更多資訊</a>
-            </div>
-          </div>
-        </div>
-        <!-- 相機卡片 2 -->
-        <div class="col-md-4" data-aos="fade" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0 h-100">
-            <img src="./nikon/1695276215.png" class="card-img-top" alt="相機2">
-            <div class="card-body">
-              <h5 class="card-title">Nikon ZF</h5>
-              <p class="card-text">ZF表達您的個性，其風格將激發您的美學感官</p>
-              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 相機卡片 3 -->
-        <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0  h-100">
-            <img src="./fuji/xt5.jpg" class="card-img-top" alt="相機3">
-            <div class="card-body">
-              <h5 class="card-title">Fujifilm X-T5</h5>
-              <p class="card-text">復古造型，色彩迷人，適合街拍。</p>
-              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div>
-    <h2 class="mb-2 text-dark text-center" id="促銷活動" style="padding-top: 120px;">促銷活動</h2>
-    <section class="py-5 bg-light">
-      <div class="container">
+        <h2 class="mb-4 text-dark text-center">熱門相機推薦</h2>
         <div class="row g-4">
-
-          <!-- 活動 1 -->
-          <div class="col-md-6">
-            <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
-              <h4 class="text-danger">🔥 限時特惠！</h4>
-              <p class="text-secondary">活動期間：6/5～6/15，指定相機限量折扣，售完為止！</p>
-              <a href="商城main.html" class="btn btn-danger btn-sm">立即搶購</a>
+          <!-- 相機卡片 1 -->
+          <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
+            <div class="card bg-dark text-white border-0 h-100">
+              <img src="./理光/ge.jpg" class="card-img-top" alt="相機1">
+              <div class="card-body">
+                <h5 class="card-title">理光Rioch GR III HDF和GR IIIx HDF</h5>
+                <p class="card-text">兼具高畫質和柔和高亮表现</p>
+                <a class="btn btn-outline-light btn-sm" href="理光GRhdf.html">更多資訊</a>
+              </div>
+            </div>
+          </div>
+          <!-- 相機卡片 2 -->
+          <div class="col-md-4" data-aos="fade" data-aos-duration="1000">
+            <div class="card bg-dark text-white border-0 h-100">
+              <img src="./nikon/1695276215.png" class="card-img-top" alt="相機2">
+              <div class="card-body">
+                <h5 class="card-title">Nikon ZF</h5>
+                <p class="card-text">ZF表達您的個性，其風格將激發您的美學感官</p>
+                <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
+              </div>
             </div>
           </div>
 
-          <!-- 活動 2 -->
-          <div class="col-md-6" data-aos-delay="200">
-            <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
-              <h4 class="text-primary">🎁 滿額送好禮</h4>
-              <p class="text-secondary">消費滿 NT$10,000 即贈原廠相機背帶一條</p>
-              <a href="#" class="btn btn-primary btn-sm">查看詳情</a>
+          <!-- 相機卡片 3 -->
+          <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
+            <div class="card bg-dark text-white border-0  h-100">
+              <img src="./fuji/xt5.jpg" class="card-img-top" alt="相機3">
+              <div class="card-body">
+                <h5 class="card-title">Fujifilm X-T5</h5>
+                <p class="card-text">復古造型，色彩迷人，適合街拍。</p>
+                <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
     </section>
-  </div>
 
-  <div class="mt-1">
-    <h2 class="text-dark text-center" id="最新消息" style="padding-top: 120px;">最新消息</h2>
-    <section class="py-5 bg-white">
-      <div class="container">
-        <div class="row g-4">
-          <a href="sonya7c2.html" class="text-decoration text-decoration-none">
-            <div class="col-md-12 mx-auto">
-              <div class="p-4 bg-light rounded-1 h-500 text-center">
-                <img src="./輪播/FY24_a7c.jpg" class="w-100" alt="">
+    <div>
+      <h2 class="mb-2 text-dark text-center" id="促銷活動" style="padding-top: 120px;">促銷活動</h2>
+      <section class="py-5 bg-light">
+        <div class="container">
+          <div class="row g-4">
+
+            <!-- 活動 1 -->
+            <div class="col-md-6">
+              <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
+                <h4 class="text-danger">🔥 限時特惠！</h4>
+                <p class="text-secondary">活動期間：6/5～6/15，指定相機限量折扣，售完為止！</p>
+                <a href="商城main.html" class="btn btn-danger btn-sm">立即搶購</a>
               </div>
-          </a>
+            </div>
+
+            <!-- 活動 2 -->
+            <div class="col-md-6" data-aos-delay="200">
+              <div class="p-4 bg-white shadow rounded-1 h-100 text-center">
+                <h4 class="text-primary">🎁 滿額送好禮</h4>
+                <p class="text-secondary">消費滿 NT$10,000 即贈原廠相機背帶一條</p>
+                <a href="#" class="btn btn-primary btn-sm">查看詳情</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mt-1">
+      <h2 class="text-dark text-center" id="最新消息" style="padding-top: 120px;">最新消息</h2>
+      <section class="py-5 bg-white">
+        <div class="container">
+          <div class="row g-4">
+            <a href="sonya7c2.html" class="text-decoration text-decoration-none">
+              <div class="col-md-12 mx-auto">
+                <div class="p-4 bg-light rounded-1 h-500 text-center">
+                  <img src="./輪播/FY24_a7c.jpg" class="w-100" alt="">
+                </div>
+            </a>
+          </div>
+        </div>
+    </div>
+    </section>
+    </div>
+
+    <!-- 開場動畫 -->
+    <div id="cameraIntro"
+    class="position-fixed top-0 start-0 w-100 h-100 bg-black d-flex flex-column justify-content-center align-items-center text-white">
+    <img src="./相機logog2.png" alt="Camera" id="cameraImg" style="width: 500px; animation: popIn 1s ease;">
+    <div id="flash" class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0;"></div>
+  </div>
+  </body>
+
+  <!-- 頁尾 -->
+  <footer class="py-4 bg-black text-secondary" id="聯絡我們">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- 公司資訊 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">WEiLiFlim 攝影商城</h5>
+          <p class="mb-1">地址：台中市西區中美街123號</p>
+          <p class="mb-1">電話：(04) 1234-5678</p>
+          <p class="mb-1">電子信箱：service@weiliflim.com</p>
+        </div>
+
+        <!-- 客服時間 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">客服時間</h5>
+          <p class="mb-1">週一至週五：09:00 - 18:00</p>
+          <p class="mb-1">週末與國定假日暫停服務</p>
+          <p class="mb-1">線上客服：24小時自動回應系統</p>
+        </div>
+
+        <!-- 社群連結 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">追蹤我們</h5>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
+              alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png"
+              alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png"
+              alt=""></a>
         </div>
       </div>
-  </div>
-  </section>
-  </div>
 
-   <!-- 開場動畫 -->
-   <div id="cameraIntro"
-   class="position-fixed top-0 start-0 w-100 h-100 bg-black d-flex flex-column justify-content-center align-items-center text-white">
-   <img src="/相機logog2.png" alt="Camera" id="cameraImg" style="width: 500px; animation: popIn 1s ease;">
-   <div id="flash" class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0;"></div>
- </div>
-</body>
+      <hr class="border-secondary my-3">
 
-<!-- 頁尾 -->
-<footer class="py-4 bg-black text-secondary" id="聯絡我們">
-  <div class="container">
-    <div class="row text-center text-md-start">
-      <!-- 公司資訊 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">WEiLiFlim 攝影商城</h5>
-        <p class="mb-1">地址：台中市西區中美街123號</p>
-        <p class="mb-1">電話：(04) 1234-5678</p>
-        <p class="mb-1">電子信箱：service@weiliflim.com</p>
-      </div>
-
-      <!-- 客服時間 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">客服時間</h5>
-        <p class="mb-1">週一至週五：09:00 - 18:00</p>
-        <p class="mb-1">週末與國定假日暫停服務</p>
-        <p class="mb-1">線上客服：24小時自動回應系統</p>
-      </div>
-
-      <!-- 社群連結 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">追蹤我們</h5>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
-            alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png"
-            alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png"
-            alt=""></a>
+      <div class="text-center">
+        <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
       </div>
     </div>
+  </footer>
 
-    <hr class="border-secondary my-3">
+  <!-- Bootstrap 與 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <!-- 回到頂部按鈕 -->
+  <script>
+    window.onscroll = function () {
+      const btn = document.getElementById("logo");
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
 
-    <div class="text-center">
-      <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
-    </div>
-  </div>
-</footer>
-
-<!-- Bootstrap 與 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
-<!-- 回到頂部按鈕 -->
-<script>
-  window.onscroll = function () {
-    const btn = document.getElementById("logo");
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
-  };
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  </script>
+  <!-- 漢堡JS -->
+  <script>
+    // Look for .hamburger
+    var hamburger = document.querySelector(".hamburger");
+    // On click
+    hamburger.addEventListener("click", function () {
+      // Toggle class "is-active"
+      hamburger.classList.toggle("is-active");
+      // Do something else, like open/close menu
     });
-  }
-</script>
-<!-- 漢堡JS -->
-<script>
-  // Look for .hamburger
-  var hamburger = document.querySelector(".hamburger");
-  // On click
-  hamburger.addEventListener("click", function () {
-    // Toggle class "is-active"
-    hamburger.classList.toggle("is-active");
-    // Do something else, like open/close menu
-  });
-</script>
-<!-- 下拉式JS -->
-<script>
-  function toggleDropdown(event) {
-    event.preventDefault();
-    const dropdown = event.target.closest('.custom-dropdown');
-    const menu = dropdown.querySelector('.custom-dropdown-menu');
-    const isVisible = menu.style.display === 'block';
+  </script>
+  <!-- 下拉式JS -->
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('.custom-dropdown');
+      const menu = dropdown.querySelector('.custom-dropdown-menu');
+      const isVisible = menu.style.display === 'block';
 
-    // 關閉所有其他下拉選單
-    document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
-
-    // 切換目前的選單
-    menu.style.display = isVisible ? 'none' : 'block';
-  }
-
-  // 點擊外部時關閉下拉選單
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.custom-dropdown')) {
+      // 關閉所有其他下拉選單
       document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+
+      // 切換目前的選單
+      menu.style.display = isVisible ? 'none' : 'block';
     }
-  });
-</script>
-<!-- 漸變 -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
 
-<script src="/flasheffect.js"></script>
+    // 點擊外部時關閉下拉選單
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.custom-dropdown')) {
+        document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
+      }
+    });
+  </script>
+  <!-- 漸變 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-<script src="./login.js"></script>
+  <script src="./flasheffect.js"></script>
+
+  <script src="./login.js"></script>
 
 
 
-</body>
+  </body>
 
-</html>
+  </html>
