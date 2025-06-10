@@ -10,8 +10,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet">  <!-- 右下角回最上面 -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./my-webfont.css">
+  <style>
+    body {
+      font-family: '8bitfont', Courier, monospace;
+    }
+  </style>
+  <!-- 右下角回最上面 -->
   <style>
     #logo {
       position: fixed;
@@ -28,6 +34,8 @@
       z-index: 1000;
       cursor: pointer;
       transition: opacity 0.3s;
+      background-color: #333;
+      border-radius: 100%;
     }
 
     /* 可選：滑鼠移上去變透明一點 */
@@ -175,75 +183,74 @@
 
   <!-- logo與漢堡列 -->
   <div class="d-flex align-items-center" style="background-color: #000000;">
-      <!-- Logo -->
-      <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
-          <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
-      </a>
+    <!-- Logo -->
+    <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
+      <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
+    </a>
 
-      <!-- 推動右側區塊到右邊 -->
-      <div class="d-flex align-items-center ms-auto">
+    <!-- 推動右側區塊到右邊 -->
+    <div class="d-flex align-items-center ms-auto">
 
-          <!-- 登入狀態 -->
-          <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
-              <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
-          </div>
+      <!-- 登入狀態 -->
+      <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none">
+        <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
       </div>
+    </div>
 
 
-      <!-- 漢堡選單 (手機用) -->
-      <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNav" id="hamburgerButton">
-          <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-          </span>
-      </button>
+    <!-- 漢堡選單 (手機用) -->
+    <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" id="hamburgerButton">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
   </div>
 
   <!-- 導覽列 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <div class="container">
+    <div class="container">
 
-          <!-- 導覽連結 -->
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav justify-content-center text-center">
-                  <!-- 桌面版 自訂 dropdown -->
-                  <li class="nav-item custom-dropdown d-none d-lg-block">
-                      <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
-                      <div class="custom-dropdown-menu">
-                          <a href="sonymain.html">索尼 SONY</a>
-                          <a href="ricohmain.html">理光 Ricoh</a>
-                      </div>
-                  </li>
+      <!-- 導覽連結 -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav justify-content-center text-center">
+          <!-- 桌面版 自訂 dropdown -->
+          <li class="nav-item custom-dropdown d-none d-lg-block">
+            <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
+            <div class="custom-dropdown-menu">
+              <a href="sonymain.html">索尼 SONY</a>
+              <a href="ricohmain.html">理光 Ricoh</a>
+            </div>
+          </li>
 
-                  <!-- 手機版 Bootstrap dropdown -->
-                  <li class="nav-item dropdown d-block d-lg-none ">
-                      <a class="nav-link dropdown-toggle" href="#" role="button"
-                          data-bs-toggle="dropdown">相機介紹</a>
-                      <ul class="dropdown-menu text-center">
-                          <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
-                          <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="商城main.html">商城</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">促銷活動</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">最新消息</a>
-                    </li>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">聯絡我們</a>
-                  </li>
+          <!-- 手機版 Bootstrap dropdown -->
+          <li class="nav-item dropdown d-block d-lg-none ">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">相機介紹</a>
+            <ul class="dropdown-menu text-center">
+              <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
+              <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="商城main.html">商城</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">促銷活動</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">最新消息</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">聯絡我們</a>
+          </li>
 
-                  <li class="nav-item d-block d-lg-none" id="loginMobileItem">
-                      <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
-                  </li>
-              </ul>
-          </div>
+          <li class="nav-item d-block d-lg-none" id="loginMobileItem">
+            <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
+          </li>
+        </ul>
       </div>
+    </div>
   </nav>
 </header>
 
@@ -298,7 +305,7 @@
                       </div>
                     </div>
                   </div>
-            
+
 
 
                 </div>
@@ -340,9 +347,12 @@
       <div class="col-md-4 mb-3">
         <h5 class="text-white">追蹤我們</h5>
         <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png" alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
+            alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png"
+            alt=""></a>
+        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png"
+            alt=""></a>
       </div>
     </div>
 

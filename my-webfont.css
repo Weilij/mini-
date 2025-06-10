@@ -1,0 +1,4 @@
+@font-face {
+    font-family: '8bitfont'; /* 設置字體家族名稱 */
+    src: url('./Cubic-11/fonts/web/Cubic_11.woff2') format('woff2'); /* 引用 WOFF2 字体 */
+  }
