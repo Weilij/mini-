@@ -1,0 +1,280 @@
+/* 右下角回最上面 */
+#logo {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url("./12.png");
+    /* 換成你的 logo 路徑 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    z-index: 1000;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    background-color: #333;
+    border-radius: 100%;
+}
+
+/* 可選：滑鼠移上去變透明一點 */
+#logo:hover {
+    opacity: 0.8;
+}
+
+
+/* 漢堡菜單 */
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    background-color: white !important;
+    width: 25px;
+    height: 3px;
+}
+
+/* 輪播 */
+
+.carousel-inner {
+    aspect-ratio: 16 / 5;
+    /* 輪播區域統一高度 */
+}
+
+.carousel-inner img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* 保持圖片比例並裁切填滿 */
+}
+
+.card {
+    transition: transform 0.1s ease;
+}
+
+#carouselmain {
+    display: block;
+    transition: transform 0.1s ease;
+}
+
+#carouselmain:hover {
+    transform: scale(1.05);
+}
+
+/* 下拉式選單 */
+.custom-dropdown {
+    position: relative;
+}
+
+.custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    z-index: 1000;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.custom-dropdown-menu a:hover {
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+
+/* 卡片圖片樣式 */
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* 閃光hero  */
+@keyframes popIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes flashEffect {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  #cameraIntro {
+    z-index: 9999;
+  }
+  
+  #flash {
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+  }
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-image: url('./photo2pixel_download.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    color: white;
+    z-index: 1;
+    max-width: 90%;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.hero a.button {
+    display: inline-block;
+    background-color: #ff5500;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero a.button:hover {
+    background-color: #e64500;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero a.button {
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+}
+
+/* 飛行相機  */
+.flying-camera-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    /* 調整一個適當的高度 */
+    margin-top: 10px;
+}
+
+.flying-camera {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    /* 初始在畫面左邊外面，確保圖片完全隱藏 */
+    transform: translateY(-50%);
+    width: 150px;
+    /* 關鍵：使用 transition 讓 left 屬性的變化產生動畫效果 */
+    transition: left 7s cubic-bezier(0.25, 1, 0.5, 1);
+    /* 調整動畫速度和曲線 */
+}
+
+/* 當這個 class 被加入時，相機飛向右邊 */
+.flying-camera.fly-right {
+    left: 100%;
+    /* 移動到畫面右邊外面 */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  header.hide-on-scroll {
+    transform: translateY(-100%);
+  }
+
+  .logo img {
+    width: 80px;
+    height: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .login-btn {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  }

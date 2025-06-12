@@ -74,3 +74,22 @@ document.addEventListener("click", function (e) {
         window.location.href = "主頁.html";
     }
 });
+
+// navbar收入
+
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.getElementById("mainHeader");
+    let lastScrollTop = 0;
+
+    window.addEventListener("scroll", function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            header.classList.add("hide-on-scroll");
+        } else {
+            header.classList.remove("hide-on-scroll");
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+});

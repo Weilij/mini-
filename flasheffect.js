@@ -1,18 +1,26 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const flash = document.getElementById('flash');
-    const intro = document.getElementById('cameraIntro');
+  const flash = document.getElementById('flash');
+  const intro = document.getElementById('cameraIntro');
 
-    // 1 秒後閃光
-    setTimeout(() => {
-      flash.style.animation = 'flashEffect 0.4s ease';
-    }, 1000);
+  // 顯示動畫容器
+  intro.classList.remove("d-none");
+  intro.classList.add("d-flex");
 
-    // 1.5 秒後移除 intro 畫面
+  // 1 秒後觸發閃光動畫
+  setTimeout(() => {
+    flash.style.animation = 'none';
+    flash.offsetHeight; // 強制回流
+    flash.style.animation = 'flashEffect 0.4s ease';
+  }, 1000);
+
+  // 1.5 秒後淡出並移除遮罩
+  setTimeout(() => {
+    intro.style.transition = 'opacity 0.8s ease';
+    intro.style.opacity = '0';
+
     setTimeout(() => {
-      intro.style.transition = 'opacity 0.8s ease';
-      intro.style.opacity = '0';
-      setTimeout(() => {
-        intro.style.pointerEvents = "none"; // 禁止遮擋互動
-    }, 1000); // 1 秒後移除動畫畫面
-    }, 1500);
-  });
+      intro.style.pointerEvents = "none";
+      intro.style.display = "none";
+    }, 800);
+  }, 1500);
+});

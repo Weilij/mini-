@@ -13,114 +13,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./底片.css">
   <link rel="stylesheet" href="./my-webfont.css">
+  <link rel="stylesheet" href="./main.css">
   <style>
     body {
       font-family: '8bitfont', Courier, monospace;
-    }
-  </style>
-  <!-- 右下角回最上面 -->
-  <style>
-    #logo {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 60px;
-      height: 60px;
-      background-image: url("./12.png");
-      /* 換成你的 logo 路徑 */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: transparent;
-      z-index: 1000;
-      cursor: pointer;
-      transition: opacity 0.3s;
-      background-color: #333;
-      border-radius: 100%;
-    }
-
-    /* 可選：滑鼠移上去變透明一點 */
-    #logo:hover {
-      opacity: 0.8;
-    }
-  </style>
-  <!-- 漢堡菜單 -->
-  <style>
-    .hamburger-inner,
-    .hamburger-inner::before,
-    .hamburger-inner::after {
-      background-color: white !important;
-      width: 25px;
-      height: 3px;
-    }
-  </style>
-  <!-- 輪播 -->
-  <style>
-    .carousel-inner {
-      aspect-ratio: 16 / 5;
-      /* 輪播區域統一高度 */
-    }
-
-    .carousel-inner img {
-      display: block;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      /* 保持圖片比例並裁切填滿 */
-    }
-
-    .card {
-      transition: transform 0.1s ease;
-    }
-
-    #carouselmain {
-      display: block;
-      transition: transform 0.1s ease;
-    }
-
-    #carouselmain:hover {
-      transform: scale(1.05);
-    }
-  </style>
-  <!-- 下拉式選單 -->
-  <style>
-    .custom-dropdown {
-      position: relative;
-    }
-
-    .custom-dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      border-radius: 15px;
-      background-color: #ffffff;
-      border: 1px solid #ffffff;
-      z-index: 1000;
-      min-width: 150px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .custom-dropdown-menu a {
-      display: block;
-      padding: 10px;
-      color: #000000;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .custom-dropdown-menu a:hover {
-      background-color: #333;
-      color: #ffffff;
-      border-radius: 10px;
-    }
-  </style>
-  <!-- 卡片圖片樣式 -->
-  <style>
-    .card-img-top {
-      height: 250px;
-      object-fit: cover;
-      width: 100%;
     }
   </style>
   <!-- 卡片自制 -->
@@ -165,71 +61,12 @@
       border-radius: 10px;
     }
   </style>
-  <style>
-    @keyframes popIn {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes flashEffect {
-      0% {
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    #cameraIntro {
-      z-index: 9999;
-    }
-  </style>
-  <!-- 飛行相機 -->
-  <style>
-    .flying-camera-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100px;
-      /* 調整一個適當的高度 */
-      margin-top: 10px;
-    }
-
-    .flying-camera {
-      position: absolute;
-      top: 50%;
-      left: 0px;
-      /* 初始在畫面左邊外面，確保圖片完全隱藏 */
-      transform: translateY(-50%);
-      width: 150px;
-      /* 關鍵：使用 transition 讓 left 屬性的變化產生動畫效果 */
-      transition: left 7s cubic-bezier(0.25, 1, 0.5, 1);
-      /* 調整動畫速度和曲線 */
-    }
-
-    /* 當這個 class 被加入時，相機飛向右邊 */
-    .flying-camera.fly-right {
-      left: 100%;
-      /* 移動到畫面右邊外面 */
-    }
-  </style>
   <!--  週年 -->
   <style>
     /* --- 周年慶倒數區塊 --- */
     .anniversary-countdown {
       position: relative;
-      background: url('') center center/cover;
+      background: url('./photo2pixel_download.png') center center/cover;
       color: white;
       padding: 5rem 1rem;
       border-radius: 0px;
@@ -303,129 +140,195 @@
     }
 
     .btn {
-      font-size: 13px;
+      font-size: 16px;
       border: px solid #ffffff;
       padding: 10px;
       box-shadow: 2px 2px #000;
       border-radius: 0px;
+
+    }
+  </style>
+  <!-- 相機框 -->
+  <style>
+    .circle-container {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background-image: url(./相機種類/photo2pixel_download\ \(10\).png);
+      position: relative;
+      overflow: hidden;
+      image-rendering: pixelated;
+    }
+
+    .circle-container img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: auto;
+      transform: translate(-50%, -50%);
+      image-rendering: pixelated;
+      filter: contrast(120%) saturate(80%);
     }
   </style>
 
-<body style="background-color: #f2ebeb; ">
+<body style="background-color: #323131; ">
 
-  <!-- 回到頂部的 logo -->
-  <div id="logo" onclick="scrollToTop()"></div>
-
-  <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1050;">
-
-    <!-- logo與漢堡列 -->
-    <div class="d-flex align-items-center" style="background-color: #000000;">
+  <!-- 手機版的navbar -->
+  <nav class="navbar navbar-dark bg-black d-lg-none fixed-top">
+    <div class="container-fluid">
       <!-- Logo -->
-      <a class="navbar-brand" style="margin-left: 20px;" href="主頁.html">
-        <img src="./12.png" alt="Logo" style="width: 80px; height: 50px;">
+      <a class="navbar-brand" href="主頁.html">
+        <img src="./12.png" alt="Logo" height="50">
       </a>
 
-      <!-- 推動右側區塊到右邊 -->
-      <div class="d-flex align-items-center ms-auto">
-
-        <!-- 登入狀態 -->
-        <div id="loginStatus" class="me-3 d-none d-md-block text-light text-decoration-none btn">
-          <a href="會員中心.html" class="nav-link" id="loginLink">登入 / 註冊</a>
-        </div>
-      </div>
-
-
-      <!-- 漢堡選單 (手機用) -->
-      <button class="hamburger hamburger--stand d-lg-none" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" id="hamburgerButton">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
+      <!-- 漢堡按鈕 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar"
+        aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger hamburger--spin" id="mobileHamburger">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
         </span>
       </button>
     </div>
 
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
-      <div class="container">
+    <!-- 導覽選單 -->
+    <div class="collapse bg-black" id="mobileNavbar">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#相機種類介紹">相機介紹</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="商城main.html">商城</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#促銷活動">促銷活動</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#最新消息">最新消息</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#聯絡我們">聯絡我們</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="會員中心.html" id="loginMobileItem">登入 / 註冊</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- 回到頂部的 logo -->
+  <div id="logo" onclick="scrollToTop()"></div>
+  <header id="mainHeader">
+    <div class="logo">
+      <a href="主頁.html"><img src="./12.png" alt="Logo" /></a>
+    </div>
 
-        <!-- 導覽連結 -->
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul class="navbar-nav justify-content-center text-center">
-            <!-- 桌面版 自訂 dropdown -->
-            <li class="nav-item custom-dropdown d-none d-lg-block">
-              <a class="nav-link" href="#" onclick="toggleDropdown(event)">相機介紹 ▾</a>
-              <div class="custom-dropdown-menu">
-                <a href="sonymain.html">索尼 SONY</a>
-                <a href="ricohmain.html">理光 Ricoh</a>
-              </div>
-            </li>
 
-            <!-- 手機版 Bootstrap dropdown -->
-            <li class="nav-item dropdown d-block d-lg-none ">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">相機介紹</a>
-              <ul class="dropdown-menu text-center">
-                <li><a class="dropdown-item" href="sonymain.html">索尼SONY</a></li>
-                <li><a class="dropdown-item" href="ricohmain.html">理光Rioch</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="商城main.html">商城</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#促銷活動">促銷活動</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#最新消息">最新消息</a>
-            </li>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#聯絡我們">聯絡我們</a>
-            </li>
+    <nav class="nav-links collapse d-lg-flex" id="navbarNav">
+      <a href="#相機種類介紹" class="btn">相機介紹</a>
+      <a href="商城main.html" class="btn">商城</a>
+      <a href="#促銷活動" class="btn">促銷活動</a>
+      <a href="#最新消息" class="btn">最新消息</a>
+      <a href="#聯絡我們" class="btn">聯絡我們</a>
+    </nav>
+    <a href="會員中心.html" class="login-btn d-none d-md-block" id="loginMobileItem">登入 / 註冊</a>
 
-            <li class="nav-item d-block d-lg-none" id="loginMobileItem">
-              <a class="nav-link" href="會員中心.html" id="loginStatusMobile">登入 / 註冊</a>
-            </li>
+
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>WEiLiFilm</h1>
+      <p>底片、單眼、無反、像素相機 — 捕捉時光的每一刻</p>
+      <a href="#相機種類介紹" class="btn" style="background-color:#ff5500; color: #ffffff;" id="showIntro">了解更多</a>
+    </div>
+  </section>
+
+  <!-- 飛行相機 -->
+  <div style="margin-top: 20rem;">
+    <div class="flying-camera-wrapper">
+      <img src="./cfly.png" alt="Flying Camera" class="flying-camera" id="flyingCamera" />
+    </div>
+    <h1 class="mt-2 ms-auto me-auto w-25  text-center text-light" data-aos="fade" data-aos-duration="1000">WEiLiFilm
+    </h1>
+  </div>
+
+  <!-- 相機介紹表 -->
+  <section style="margin-top: 300px;">
+    <div class="container">
+      <h1 class="mt-5 mb-5 ms-auto me-auto bg-black w-25  text-center text-light" data-aos="fade"
+        data-aos-duration="1000" id="相機種類介紹">相機種類介紹
+      </h1>
+      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+        <div class="circle-container col-md-6 col-12 ms-auto me-auto">
+          <img src="./相機種類/底片相機.png" alt="相機圖片">
+        </div>
+        <div class=" col-12 col-md-6 m-auto text-light">
+          <h1>底片相機</h1>
+          <p>底片相機是最早期的影像記錄工具之一，透過感光底片捕捉影像。拍攝後必須經過沖洗與顯影，才能看到成品。底片相機的顏色、顆粒感與動態範圍至今仍受到許多攝影愛好者與專業攝影師的喜愛。</p>
+          <ul>
+            <li> 特色：顆粒感自然、色彩溫潤、機械感十足</li>
+            <li> 代表機型：Leica M 系列、Nikon FM2、Contax T2</li>
           </ul>
         </div>
       </div>
-    </nav>
-  </header>
-
-
-  <!-- 輪播的畫面 -->
-  <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel" style="padding-top: 100px;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="理光GRhdf.html" id="carouselmain"><img src="./輪播/1660614840.png" alt="..."></a>
+      <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
+        <div class=" col-12 col-md-6 m-auto text-light">
+          <h1>單眼相機（DSLR）</h1>
+          <p>單眼相機是一種使用反光鏡與五稜鏡結構的數位相機，讓使用者可以直接透過光學觀景窗觀看拍攝畫面。具備快速對焦、高速連拍與強大鏡頭群的優勢，是商業與專業攝影的主流工具。</p>
+          <ul>
+            <li> 特色：對焦精準、可更換鏡頭、操控靈活</li>
+            <li> 代表機型：Canon EOS、Nikon D 系列</li>
+          </ul>
+        </div>
+        <div class="circle-container col-md-6 col-12 m-auto">
+          <img src="./相機種類/有返.png" alt="相機圖片">
+        </div>
       </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/zf.jpg" alt="..."></a>
+      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+        <div class="circle-container col-md-6 col-12 ms-auto me-auto">
+          <img src="./相機種類/無反.png" alt="相機圖片">
+        </div>
+        <div class=" col-12 col-md-6 m-auto text-light">
+          <h1>無反相機（Mirrorless Camera）</h1>
+          <p>無反相機取消了傳統單眼的反光鏡結構，改用電子觀景窗與即時顯示螢幕進行構圖。機身更輕巧，保有可更換鏡頭的彈性，是目前市場發展最迅速的主力機型。</p>
+          <ul>
+            <li> 特色：體積小、即時預覽、對焦快速</li>
+            <li> 代表機型：Sony α 系列、Fujifilm X 系列、Canon R 系列</li>
+          </ul>
+        </div>
       </div>
-      <div class="carousel-item">
-        <a href="nikonz5ii.html" id="carouselmain"><img src="./輪播/z52.jpg" alt="..."></a>
+      <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
+        <div class=" col-12 col-md-6 m-auto text-light">
+          <h1>CCD 相機（CCD Sensor Camera）</h1>
+          <p>CCD（Charge Coupled Device）是早期高階數位相機常用的感光元件。雖然已逐漸被 CMOS 感光元件取代，但 CCD 拍出來的影像擁有獨特的色彩表現與「膠片感」，因此依然受到現代社群的喜愛。
+          </p>
+          <ul>
+            <li> 特色：色彩濃郁、影像柔和、像素低但細膩</li>
+            <li> 代表機型：Nikon Coolpix 系列（早期）、Canon PowerShot G 系列（老機型）</li>
+          </ul>
+        </div>
+        <div class="circle-container col-md-6 col-12 m-auto">
+          <img src="./相機種類/ccd.png" alt="相機圖片">
+        </div>
       </div>
-
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/FY24_a7c.jpg" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/xm5.jpg" alt="..."></a>
+      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+        <div class="circle-container col-md-6 col-12 ms-auto me-auto">
+          <img src="./相機種類/隨身.png" alt="相機圖片">
+        </div>
+        <div class=" col-12 col-md-6 m-auto text-light">
+          <h1>隨身小相機（Compact Camera）</h1>
+          <p>這類相機以「小巧」、「快速」、「畫質不輸單眼」為主打，適合街拍、旅遊與日常記錄。其中像 Ricoh GR 系列、Fujifilm X100 系列等，被許多攝影師當作隨身主力機使用。</p>
+          <ul>
+            <li> 特色：體積輕巧、操作直覺、畫質優異</li>
+            <li> 代表機型：Ricoh GR III、Fujifilm X100V、Sony RX100 系列</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+  </section>
 
-  <!-- 飛行相機 -->
-  <div class="flying-camera-wrapper">
-    <img src="./cfly.png" alt="Flying Camera" class="flying-camera" id="flyingCamera" />
-  </div>
 
   <!-- 相機介紹簡介 -->
   <section class="py-5 text-white">
@@ -550,7 +453,7 @@
 
   <!-- 開場動畫 -->
   <div id="cameraIntro"
-    class="position-fixed top-0 start-0 w-100 h-100 bg-black d-flex flex-column justify-content-center align-items-center text-white">
+    class="position-fixed top-0 start-0 w-100 h-100 bg-black d-none flex-column justify-content-center align-items-center text-white">
     <img src="./相機logog2.png" alt="Camera" id="cameraImg" style="width: 500px; animation: popIn 1s ease;">
     <div id="flash" class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0;"></div>
   </div>
@@ -692,7 +595,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // ================== 在這裡設定您的周年慶結束日期 ==================
+    // ================== 在這裡設定周年慶結束日期 ==================
     const countDownDate = new Date("2025-07-01T00:00:00").getTime();
 
     const daysEl = document.getElementById("days");
@@ -719,7 +622,6 @@
     }, 1000);
   });
 </script>
-
 </body>
 
 </html>
