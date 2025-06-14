@@ -158,10 +158,10 @@
       background-color: #ff5500;
       color: #e9e7e7;
     }
-    
-    .btnsm:hover{
-       box-shadow: 2px 2px #ffffff;
-       background-color: #e64c00;
+
+    .btnsm:hover {
+      box-shadow: 2px 2px #ffffff;
+      background-color: #e64c00;
     }
   </style>
   <!-- 相機框 -->
@@ -182,6 +182,27 @@
       left: 50%;
       width: 400px;
       height: auto;
+      transform: translate(-50%, -50%);
+      image-rendering: pixelated;
+      filter: contrast(120%) saturate(80%);
+    }
+
+    .circle-container-2 {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-image: url(./相機種類/photo2pixel_download\ \(10\).png);
+      position: relative;
+      overflow: hidden;
+      image-rendering: pixelated;
+    }
+
+    .circle-container-2 img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
       transform: translate(-50%, -50%);
       image-rendering: pixelated;
       filter: contrast(120%) saturate(80%);
@@ -248,9 +269,9 @@
       <a href="#最新消息" class="btn">最新消息</a>
       <a href="#聯絡我們" class="btn">聯絡我們</a>
     </nav>
-    <a href="會員中心.html" class="login-btn d-none d-md-block" id="loginMobileItem">登入 / 註冊</a>
-
-
+    <div id="loginStatus">
+      <a href="會員中心.html" class="login-btn d-none d-md-block" id="loginDesktop">登入 / 註冊</a>
+    </div>
   </header>
 
   <section class="hero">
@@ -277,7 +298,7 @@
         data-aos-duration="1000" id="相機種類介紹">相機種類介紹
       </h1>
       <!-- 底片相機 -->
-      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+      <div class="row py-5 mt-5" data-aos="fade-right" data-aos-duration="1000">
         <div class="circle-container col-md-6 col-12 ms-auto me-auto order-0 order-md-0">
           <img src="./相機種類/底片相機.png" alt="相機圖片">
         </div>
@@ -293,8 +314,28 @@
           </div>
         </div>
       </div>
+      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+        <div class="circle-container-2 col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/fuji 100.png" alt="相機圖片">
+        </div>
+        <div class="circle-container-2  col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/fuji 400.png" alt="相機圖片">
+        </div>
+        <div class="circle-container-2  col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/kodad ultramaz.png" alt="相機圖片">
+        </div>
+        <div class="circle-container-2  col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/kodak colorplus.png" alt="相機圖片">
+        </div>
+        <div class="circle-container-2  col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/kodak gold.png" alt="相機圖片">
+        </div>
+        <div class="circle-container-2  col-2 ms-auto me-auto order-0 order-md-0">
+          <img src="./相機種類/底片/鳳凰底片.png" alt="相機圖片">
+        </div>
+      </div>
       <!-- 單眼相機 -->
-      <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
+      <div class="row py-5 mt-5" data-aos="fade-left" data-aos-duration="1000">
         <div class=" col-12 col-md-6 m-auto text-light order-1 order-md-0">
           <h1>單眼相機（DSLR）</h1>
           <p>單眼相機是一種使用反光鏡與五稜鏡結構的數位相機，讓使用者可以直接透過光學觀景窗觀看拍攝畫面。具備快速對焦、高速連拍與強大鏡頭群的優勢，是商業與專業攝影的主流工具。</p>
@@ -310,7 +351,7 @@
       </div>
 
       <!-- 無反相機 -->
-      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+      <div class="row py-5 mt-5" data-aos="fade-right" data-aos-duration="1000">
         <div class="circle-container col-md-6 col-12 ms-auto me-auto">
           <img src="./相機種類/無反.png" alt="相機圖片">
         </div>
@@ -328,7 +369,7 @@
       </div>
 
       <!-- CCD相機 -->
-      <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
+      <div class="row py-5 mt-5" data-aos="fade-left" data-aos-duration="1000">
         <div class=" col-12 col-md-6 m-auto text-light order-1 order-md-0">
           <h1>CCD 相機（CCD Sensor Camera）</h1>
           <p>CCD（Charge Coupled Device）是早期高階數位相機常用的感光元件。雖然已逐漸被 CMOS 感光元件取代，但 CCD 拍出來的影像擁有獨特的色彩表現與「膠片感」，因此依然受到現代社群的喜愛。
@@ -345,7 +386,7 @@
       </div>
 
       <!-- 隨身相機 -->
-      <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
+      <div class="row py-5 mt-5" data-aos="fade-right" data-aos-duration="1000">
         <div class="circle-container col-md-6 col-12 ms-auto me-auto">
           <img src="./相機種類/隨身.png" alt="相機圖片">
         </div>
@@ -362,53 +403,7 @@
     </div>
   </section>
 
-
-  <!-- 相機介紹簡介 -->
-  <section class="py-5 text-white">
-    <div class="container">
-      <h1 class="mt-3 mb-5 ms-auto me-auto bg-black w-25  text-center" data-aos="fade" data-aos-duration="1000">熱門相機推薦
-      </h1>
-      <div class="row g-4">
-        <!-- 相機卡片 1 -->
-        <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0 h-100 rounded-0">
-            <img src="./理光/ge.jpg" class="card-img-top" alt="相機1">
-            <div class="card-body">
-              <h5 class="card-title">理光Rioch GR III HDF / GR IIIx HDF</h5>
-              <p class="card-text">兼具高畫質和柔和高亮表现</p>
-              <a class="btn btn-outline-light btn-sm" href="理光GRhdf.html">更多資訊</a>
-            </div>
-          </div>
-        </div>
-        <!-- 相機卡片 2 -->
-        <div class="col-md-4" data-aos="fade" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0 h-100 rounded-0">
-            <img src="./nikon/1695276215.png" class="card-img-top" alt="相機2">
-            <div class="card-body">
-              <h5 class="card-title">Nikon ZF</h5>
-              <p class="card-text">ZF表達您的個性，其風格將激發您的美學感官</p>
-              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 相機卡片 3 -->
-        <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
-          <div class="card bg-dark text-white border-0  h-100 rounded-0">
-            <img src="./fuji/xt5.jpg" class="card-img-top" alt="相機3">
-            <div class="card-body">
-              <h5 class="card-title">Fujifilm X-T5</h5>
-              <p class="card-text">復古造型，色彩迷人，適合街拍。</p>
-              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div style="padding-top: 120px;" data-aos="fade" data-aos-duration="1000">
+  <div style="padding-top: 20rem;" data-aos="fade" data-aos-duration="1000">
     <h2 class="mb-2 text-light bg-black text-center w-25 ms-auto me-auto" id="促銷活動">促銷活動</h2>
     <div class="container my-5 w-75">
       <div class="anniversary-countdown text-center shadow-lg mb-4"
@@ -463,14 +458,60 @@
     </div>
   </div>
 
-  <div style="padding-top: 120px;" data-aos="fade" data-aos-duration="1000">
+
+  <!-- 熱門相機 -->
+  <section class="py-5 text-white" style="margin-top: 20rem;">
+    <div class="container">
+      <h1 class="mt-3 mb-5 ms-auto me-auto bg-black w-25  text-center" data-aos="fade" data-aos-duration="1000">熱門相機推薦
+      </h1>
+      <div class="row g-4">
+        <!-- 相機卡片 1 -->
+        <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
+          <div class="card bg-dark text-white border-0 h-100 rounded-0">
+            <img src="./理光/ge.jpg" class="card-img-top" alt="相機1">
+            <div class="card-body">
+              <h5 class="card-title">理光Rioch GR III HDF / GR IIIx HDF</h5>
+              <p class="card-text">兼具高畫質和柔和高亮表现</p>
+              <a class="btn btn-outline-light btn-sm" href="理光GRhdf.html">更多資訊</a>
+            </div>
+          </div>
+        </div>
+        <!-- 相機卡片 2 -->
+        <div class="col-md-4" data-aos="fade" data-aos-duration="1000">
+          <div class="card bg-dark text-white border-0 h-100 rounded-0">
+            <img src="./nikon/1695276215.png" class="card-img-top" alt="相機2">
+            <div class="card-body">
+              <h5 class="card-title">Nikon ZF</h5>
+              <p class="card-text">ZF表達您的個性，其風格將激發您的美學感官</p>
+              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 相機卡片 3 -->
+        <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
+          <div class="card bg-dark text-white border-0  h-100 rounded-0">
+            <img src="./fuji/xt5.jpg" class="card-img-top" alt="相機3">
+            <div class="card-body">
+              <h5 class="card-title">Fujifilm X-T5</h5>
+              <p class="card-text">復古造型，色彩迷人，適合街拍。</p>
+              <a class="btn btn-outline-light btn-sm" href="">更多資訊</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section style="padding-top: 20rem; margin-bottom: 20rem;" data-aos="fade" data-aos-duration="1000">
     <div class="bg-black me-auto ms-auto w-25 text-light text-center">
       <h2 id="最新消息">最新消息</h2>
       <h4>α7C II全新上架</h4>
       <h5>預購 ▾</h5>
     </div>
-  </div>
-  <section class=" ">
     <div class="container py-4">
       <div class="row g-4">
         <a href="sonya7c2.html" class="text-decoration text-decoration-none">
@@ -481,180 +522,179 @@
         </a>
       </div>
     </div>
-    </div>
   </section>
 
   <!-- 開場動畫 -->
-  <div id="cameraIntro"
+  <!-- <div id="cameraIntro"
     class="position-fixed top-0 start-0 w-100 h-100 bg-black d-none flex-column justify-content-center align-items-center text-white">
     <img src="./相機logog2.png" alt="Camera" id="cameraImg" style="width: 500px; animation: popIn 1s ease;">
     <div id="flash" class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0;"></div>
   </div>
-</body>
+</body> -->
 
-<!-- 頁尾 -->
-<footer class="py-4 bg-black text-secondary" id="聯絡我們">
-  <div class="container">
-    <div class="row text-center text-md-start">
-      <!-- 公司資訊 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">WEiLiFlim 攝影商城</h5>
-        <p class="mb-1">地址：台中市西區中美街123號</p>
-        <p class="mb-1">電話：(04) 1234-5678</p>
-        <p class="mb-1">電子信箱：service@weiliflim.com</p>
+  <!-- 頁尾 -->
+  <footer class="py-4 bg-black text-secondary" id="聯絡我們">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- 公司資訊 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">WEiLiFlim 攝影商城</h5>
+          <p class="mb-1">地址：台中市西區中美街123號</p>
+          <p class="mb-1">電話：(04) 1234-5678</p>
+          <p class="mb-1">電子信箱：service@weiliflim.com</p>
+        </div>
+
+        <!-- 客服時間 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">客服時間</h5>
+          <p class="mb-1">週一至週五：09:00 - 18:00</p>
+          <p class="mb-1">週末與國定假日暫停服務</p>
+          <p class="mb-1">線上客服：24小時自動回應系統</p>
+        </div>
+
+        <!-- 社群連結 -->
+        <div class="col-md-4 mb-3">
+          <h5 class="text-white">追蹤我們</h5>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
+              alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;"
+              src="./Instagram_Glyph_Gradient.png" alt=""></a>
+          <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;"
+              src="./youtube_social_circle_red.png" alt=""></a>
+        </div>
       </div>
 
-      <!-- 客服時間 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">客服時間</h5>
-        <p class="mb-1">週一至週五：09:00 - 18:00</p>
-        <p class="mb-1">週末與國定假日暫停服務</p>
-        <p class="mb-1">線上客服：24小時自動回應系統</p>
-      </div>
+      <hr class="border-secondary my-3">
 
-      <!-- 社群連結 -->
-      <div class="col-md-4 mb-3">
-        <h5 class="text-white">追蹤我們</h5>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./linelogo.png" alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Facebook_Logo_2023.png"
-            alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./Instagram_Glyph_Gradient.png"
-            alt=""></a>
-        <a href="#" class="text-secondary"><img style="width: 30px; height: 30px;" src="./youtube_social_circle_red.png"
-            alt=""></a>
+      <div class="text-center">
+        <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
       </div>
     </div>
+  </footer>
 
-    <hr class="border-secondary my-3">
-
-    <div class="text-center">
-      <p class="mb-0">© 2025 WEiLiFlim. 版權所有．僅供學術練習使用</p>
-    </div>
-  </div>
-</footer>
-
-<!-- Bootstrap 與 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
-<!-- 回到頂部按鈕 -->
-<script>
-  window.onscroll = function () {
-    const btn = document.getElementById("logo");
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
-  };
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-</script>
-<!-- 漢堡JS -->
-<script>
-  // Look for .hamburger
-  var hamburger = document.querySelector(".hamburger");
-  // On click
-  hamburger.addEventListener("click", function () {
-    // Toggle class "is-active"
-    hamburger.classList.toggle("is-active");
-    // Do something else, like open/close menu
-  });
-</script>
-<!-- 下拉式JS -->
-<script>
-  function toggleDropdown(event) {
-    event.preventDefault();
-    const dropdown = event.target.closest('.custom-dropdown');
-    const menu = dropdown.querySelector('.custom-dropdown-menu');
-    const isVisible = menu.style.display === 'block';
-
-    // 關閉所有其他下拉選單
-    document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
-
-    // 切換目前的選單
-    menu.style.display = isVisible ? 'none' : 'block';
-  }
-
-  // 點擊外部時關閉下拉選單
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.custom-dropdown')) {
-      document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
-    }
-  });
-</script>
-<!-- 漸變 -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-<script src="./flasheffect.js"></script>
-
-<script src="./login.js"></script>
-<script src="./底片.js"></script>
-<script>
-  // 等待 DOM 載入完成
-  document.addEventListener("DOMContentLoaded", () => {
-    const camera = document.getElementById("flyingCamera");
-    // 用來儲存上一次滾動的位置
-    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // 監聽整個視窗的滾動事件
-    window.addEventListener("scroll", () => {
-      // 獲取當前滾動的垂直位置
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        // --- 正在往下滾動 ---
-        // 為相機加上 'fly-right' class，觸發向右飛的 CSS 動畫
-        camera.classList.add("fly-right");
+  <!-- Bootstrap 與 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <!-- 回到頂部按鈕 -->
+  <script>
+    window.onscroll = function () {
+      const btn = document.getElementById("logo");
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        btn.style.display = "block";
       } else {
-        // --- 正在往上滾動 ---
-        // 移除相機的 'fly-right' class，讓它飛回原位
-        camera.classList.remove("fly-right");
+        btn.style.display = "none";
       }
+    };
 
-      // 更新最後滾動位置，為下一次判斷做準備
-      // "scrollTop <= 0 ? 0 : scrollTop" 是為了處理 iOS 的彈性滾動效果
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, false);
-  });
-</script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+  <!-- 漢堡JS -->
+  <script>
+    // Look for .hamburger
+    var hamburger = document.querySelector(".hamburger");
+    // On click
+    hamburger.addEventListener("click", function () {
+      // Toggle class "is-active"
+      hamburger.classList.toggle("is-active");
+      // Do something else, like open/close menu
+    });
+  </script>
+  <!-- 下拉式JS -->
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.target.closest('.custom-dropdown');
+      const menu = dropdown.querySelector('.custom-dropdown-menu');
+      const isVisible = menu.style.display === 'block';
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // ================== 在這裡設定周年慶結束日期 ==================
-    const countDownDate = new Date("2025-07-01T00:00:00").getTime();
+      // 關閉所有其他下拉選單
+      document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
 
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
+      // 切換目前的選單
+      menu.style.display = isVisible ? 'none' : 'block';
+    }
 
-    const interval = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-
-      if (distance < 0) {
-        clearInterval(interval);
-        document.getElementById("countdown-timer").innerHTML = '<h4 class="text-warning">周年慶活動現正開跑！</h4>';
-        return;
+    // 點擊外部時關閉下拉選單
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.custom-dropdown')) {
+        document.querySelectorAll('.custom-dropdown-menu').forEach(el => el.style.display = 'none');
       }
+    });
+  </script>
+  <!-- 漸變 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-      const addLeadingZero = (num) => String(num).padStart(2, '0');
+  <script src="./flasheffect.js"></script>
 
-      daysEl.innerHTML = addLeadingZero(Math.floor(distance / (1000 * 60 * 60 * 24)));
-      hoursEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-      minutesEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
-      secondsEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60)) / 1000));
-    }, 1000);
-  });
-</script>
+  <script src="./login.js"></script>
+  <script src="./底片.js"></script>
+  <script>
+    // 等待 DOM 載入完成
+    document.addEventListener("DOMContentLoaded", () => {
+      const camera = document.getElementById("flyingCamera");
+      // 用來儲存上一次滾動的位置
+      let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      // 監聽整個視窗的滾動事件
+      window.addEventListener("scroll", () => {
+        // 獲取當前滾動的垂直位置
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+          // --- 正在往下滾動 ---
+          // 為相機加上 'fly-right' class，觸發向右飛的 CSS 動畫
+          camera.classList.add("fly-right");
+        } else {
+          // --- 正在往上滾動 ---
+          // 移除相機的 'fly-right' class，讓它飛回原位
+          camera.classList.remove("fly-right");
+        }
+
+        // 更新最後滾動位置，為下一次判斷做準備
+        // "scrollTop <= 0 ? 0 : scrollTop" 是為了處理 iOS 的彈性滾動效果
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      }, false);
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // ================== 在這裡設定周年慶結束日期 ==================
+      const countDownDate = new Date("2025-07-01T00:00:00").getTime();
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      const interval = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        if (distance < 0) {
+          clearInterval(interval);
+          document.getElementById("countdown-timer").innerHTML = '<h4 class="text-warning">周年慶活動現正開跑！</h4>';
+          return;
+        }
+
+        const addLeadingZero = (num) => String(num).padStart(2, '0');
+
+        daysEl.innerHTML = addLeadingZero(Math.floor(distance / (1000 * 60 * 60 * 24)));
+        hoursEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        minutesEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+        secondsEl.innerHTML = addLeadingZero(Math.floor((distance % (1000 * 60)) / 1000));
+      }, 1000);
+    });
+  </script>
 </body>
 
 </html>

@@ -210,6 +210,31 @@
             border-radius: 10px;
         }
     </style>
+    <!-- slife nav -->
+    <style>
+        /* 側邊欄初始隱藏並淡入動畫 */
+        .side-nav {
+            opacity: 0;
+            transition: opacity 0.1s ease-in-out;
+        }
+
+        /* 顯示時加入 class */
+        .side-nav.show {
+            opacity: 1;
+        }
+
+        /* 階梯式出現效果（可搭配子元素） */
+        .side-nav ul li {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .side-nav.show ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
 
 </head>
 
@@ -309,35 +334,37 @@
         </nav>
     </header>
 
-  <!-- 輪播的畫面 -->
-  <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel" style="padding-top: 100px;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="理光GRhdf.html" id="carouselmain"><img src="./輪播/1660614840.png" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/zf.jpg" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="nikonz5ii.html" id="carouselmain"><img src="./輪播/z52.jpg" alt="..."></a>
-      </div>
+    <!-- 輪播的畫面 -->
+    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel" style="padding-top: 100px;">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="理光GRhdf.html" id="carouselmain"><img src="./輪播/1660614840.png" alt="..."></a>
+            </div>
+            <div class="carousel-item">
+                <a href="主頁.html" id="carouselmain"><img src="./輪播/zf.jpg" alt="..."></a>
+            </div>
+            <div class="carousel-item">
+                <a href="nikonz5ii.html" id="carouselmain"><img src="./輪播/z52.jpg" alt="..."></a>
+            </div>
 
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/FY24_a7c.jpg" alt="..."></a>
-      </div>
-      <div class="carousel-item">
-        <a href="主頁.html" id="carouselmain"><img src="./輪播/xm5.jpg" alt="..."></a>
-      </div>
+            <div class="carousel-item">
+                <a href="主頁.html" id="carouselmain"><img src="./輪播/FY24_a7c.jpg" alt="..."></a>
+            </div>
+            <div class="carousel-item">
+                <a href="主頁.html" id="carouselmain"><img src="./輪播/xm5.jpg" alt="..."></a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 
     <!-- 三格分頁 -->
     <div class="container mt-3 " style="padding-top: 100px;">
@@ -587,6 +614,27 @@
 <script src="./login.js"></script>
 
 <script src="cart.js"></script>
+
+
+
+<!-- slide nav -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sideNav = document.querySelector('.side-nav');
+        const carousel = document.querySelector('#carouselExampleControls');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const triggerPoint = carousel.offsetTop + carousel.offsetHeight;
+
+            if (scrollY > triggerPoint) {
+                sideNav.classList.add('show');
+            } else {
+                sideNav.classList.remove('show');
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
