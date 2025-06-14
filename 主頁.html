@@ -147,6 +147,22 @@
       border-radius: 0px;
 
     }
+
+    .btnsm {
+      font-size: 12px;
+      border: px solid #ffffff;
+      padding: 10px;
+      box-shadow: 2px 2px #000;
+      border-radius: 0px;
+      text-decoration: none;
+      background-color: #ff5500;
+      color: #e9e7e7;
+    }
+    
+    .btnsm:hover{
+       box-shadow: 2px 2px #ffffff;
+       background-color: #e64c00;
+    }
   </style>
   <!-- 相機框 -->
   <style>
@@ -246,7 +262,7 @@
   </section>
 
   <!-- 飛行相機 -->
-  <div style="margin-top: 20rem;">
+  <div style="margin-top: 20rem; margin-bottom: 30rem;">
     <div class="flying-camera-wrapper">
       <img src="./cfly.png" alt="Flying Camera" class="flying-camera" id="flyingCamera" />
     </div>
@@ -260,32 +276,40 @@
       <h1 class="mt-5 mb-5 ms-auto me-auto bg-black w-25  text-center text-light" data-aos="fade"
         data-aos-duration="1000" id="相機種類介紹">相機種類介紹
       </h1>
+      <!-- 底片相機 -->
       <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
-        <div class="circle-container col-md-6 col-12 ms-auto me-auto">
+        <div class="circle-container col-md-6 col-12 ms-auto me-auto order-0 order-md-0">
           <img src="./相機種類/底片相機.png" alt="相機圖片">
         </div>
-        <div class=" col-12 col-md-6 m-auto text-light">
+        <div class=" col-12 col-md-6 m-auto text-light order-1 order-md-1">
           <h1>底片相機</h1>
           <p>底片相機是最早期的影像記錄工具之一，透過感光底片捕捉影像。拍攝後必須經過沖洗與顯影，才能看到成品。底片相機的顏色、顆粒感與動態範圍至今仍受到許多攝影愛好者與專業攝影師的喜愛。</p>
           <ul>
             <li> 特色：顆粒感自然、色彩溫潤、機械感十足</li>
             <li> 代表機型：Leica M 系列、Nikon FM2、Contax T2</li>
           </ul>
+          <div class="d-flex justify-content-end">
+            <a href="filmCamera.html" class="btnsm text-light ">查看更多</a>
+          </div>
         </div>
       </div>
+      <!-- 單眼相機 -->
       <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
-        <div class=" col-12 col-md-6 m-auto text-light">
+        <div class=" col-12 col-md-6 m-auto text-light order-1 order-md-0">
           <h1>單眼相機（DSLR）</h1>
           <p>單眼相機是一種使用反光鏡與五稜鏡結構的數位相機，讓使用者可以直接透過光學觀景窗觀看拍攝畫面。具備快速對焦、高速連拍與強大鏡頭群的優勢，是商業與專業攝影的主流工具。</p>
           <ul>
             <li> 特色：對焦精準、可更換鏡頭、操控靈活</li>
             <li> 代表機型：Canon EOS、Nikon D 系列</li>
           </ul>
+          <a href="dslrCamera.html" class="btnsm text-light ">查看更多</a>
         </div>
-        <div class="circle-container col-md-6 col-12 m-auto">
+        <div class="circle-container col-md-6 col-12 m-auto order-0 order-md-1">
           <img src="./相機種類/有返.png" alt="相機圖片">
         </div>
       </div>
+
+      <!-- 無反相機 -->
       <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
         <div class="circle-container col-md-6 col-12 ms-auto me-auto">
           <img src="./相機種類/無反.png" alt="相機圖片">
@@ -297,10 +321,15 @@
             <li> 特色：體積小、即時預覽、對焦快速</li>
             <li> 代表機型：Sony α 系列、Fujifilm X 系列、Canon R 系列</li>
           </ul>
+          <div class="d-flex justify-content-end">
+            <a href="mlCamera.html" class="btnsm text-light ">查看更多</a>
+          </div>
         </div>
       </div>
+
+      <!-- CCD相機 -->
       <div class="row py-5" data-aos="fade-left" data-aos-duration="1000">
-        <div class=" col-12 col-md-6 m-auto text-light">
+        <div class=" col-12 col-md-6 m-auto text-light order-1 order-md-0">
           <h1>CCD 相機（CCD Sensor Camera）</h1>
           <p>CCD（Charge Coupled Device）是早期高階數位相機常用的感光元件。雖然已逐漸被 CMOS 感光元件取代，但 CCD 拍出來的影像擁有獨特的色彩表現與「膠片感」，因此依然受到現代社群的喜愛。
           </p>
@@ -308,11 +337,14 @@
             <li> 特色：色彩濃郁、影像柔和、像素低但細膩</li>
             <li> 代表機型：Nikon Coolpix 系列（早期）、Canon PowerShot G 系列（老機型）</li>
           </ul>
+          <a href="ccdCamera.html" class="btnsm text-light order-1 order-md-1 ">查看更多</a>
         </div>
         <div class="circle-container col-md-6 col-12 m-auto">
           <img src="./相機種類/ccd.png" alt="相機圖片">
         </div>
       </div>
+
+      <!-- 隨身相機 -->
       <div class="row py-5" data-aos="fade-right" data-aos-duration="1000">
         <div class="circle-container col-md-6 col-12 ms-auto me-auto">
           <img src="./相機種類/隨身.png" alt="相機圖片">
@@ -324,6 +356,7 @@
             <li> 特色：體積輕巧、操作直覺、畫質優異</li>
             <li> 代表機型：Ricoh GR III、Fujifilm X100V、Sony RX100 系列</li>
           </ul>
+          <div class="d-flex justify-content-end"><a href="CompactCamera.html" class="btnsm text-light ">查看更多</a></div>
         </div>
       </div>
     </div>
